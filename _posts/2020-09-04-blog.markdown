@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "Blog 0"
+date:   2020-09-04 21:04:24 -0700
+categories: jekyll updates
+---
+Hey everyone thanks for checking out my blog! It's definitely not much but I plan on posting about cool tools that I've used throughout my professional career. 
+
+This week I learned how to use a blog based static site generator, Jekyll, which seems like an interesting tool to use if you're into blogging. Some other alternatives that people use are Drupal and Wordpress. The whole process of setting it up wasn't too difficult since there were so many guides available for me to follow. I'm hoping to add themes to bring out a more pleasing look or hosting the site on my own domain inside an EC2 instance/S3 bucket but I'll save that post for another day.
+
+Here are the resources I used:
+
+[Jekyll on Mac][Jekyll-Mac]
+[Bundler][Bundler-on-Mac]
+[Hosting Jekyll site with GitHub Pages][GitHub-Page-with-Jekyll]
+
+
+[GitHub-Page-with-Jekyll]: https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll
+[Bundler-on-Mac]:          https://bundler.io/
+[Jekyll-Mac]:              https://jekyllrb.com/docs/installation/macos/
