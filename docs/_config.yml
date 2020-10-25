@@ -26,8 +26,8 @@ github_username:  ebm17915
 markdown: kramdown
 # theme: minima
 
-theme: bulma-clean-theme
-
+#theme: bulma-clean-theme
+remote_theme: samarsault/plainwhite-jekyll
 #theme: jekyll-theme-yat
 plugins:
   - jekyll-feed
