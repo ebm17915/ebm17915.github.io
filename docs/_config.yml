@@ -13,14 +13,25 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+
+plainwhite:
+  name: Earl Madjus
+  tagline: DevOps Engineer. Solutions Architect
+  date_format: "%b %-d, %Y"
+  portfolio_image:  "assets/portfolio.png"
+
+  social_links:
+    twitter: ebm17915
+    github: ebm17915
+    linkedIn: in/earlmadjus
 title: Earl's Super Duper Fantastic Insane CIT 480 Blog
 email: earlfredrick.madjus.236@my.csun.edu
 description: >- # this means to ignore newlines until "baseurl:"
   This is a blog dedicated to sharing technical articles and tools that I come across!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: ebm17915
-github_username:  ebm17915
+#twitter_username: ebm17915
+#github_username:  ebm17915
 
 # Build settings
 markdown: kramdown
