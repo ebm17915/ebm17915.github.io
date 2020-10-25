@@ -25,7 +25,10 @@ github_username:  ebm17915
 # Build settings
 markdown: kramdown
 # theme: minima
-theme: jekyll-theme-yat
+
+theme: bulma-clean-theme
+
+#theme: jekyll-theme-yat
 plugins:
   - jekyll-feed
 
