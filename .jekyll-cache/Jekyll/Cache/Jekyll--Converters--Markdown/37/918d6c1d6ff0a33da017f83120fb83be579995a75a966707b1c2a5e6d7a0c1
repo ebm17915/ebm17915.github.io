@@ -1,0 +1,14 @@
+I"^<p>In my previous article, I discussed the utility Ansible and other similar tools provides developers. For this post, I’ll be covering the command modules I used to create an Ansible playbook that provisions a Docker container to run a test application. I’ll also add a few other modules that I find very useful for playbook writing.</p>
+
+<h3>Using Proper Ansible Modules</h3>
+
+<p><strong>Note</strong>: I’ll be using a Docker container running Ubuntu 18.04 but this playbook is compatible with local systems or cloud computing instances running Ubuntu. Just ensure that localhost and any other proper ports are accessible.</p>
+
+<p>Aside from understanding the finicky nature of Ansible’s syntax, you’ll want to start by understanding the modules. For this example, we’ll be using a module that runs the test application on localhost.</p>
+
+<p><img src="https://i.imgur.com/xuBKYXq.png" alt="Imgur" /></p>
+
+<p>In the image above, you’ll notice a parameter <code class="language-plaintext highlighter-rouge">hosts:</code>. It’s important to understand that when you run an Ansible playbook you must choose which managed nodes or groups you want to execute against. You can set a list of hosts in an <em>inventory</em>. The default location for inventory is in a file called <code class="language-plaintext highlighter-rouge">/etc/ansible/hosts</code> but you can pull sources of inventory from other sources whether it’d be from the cloud or a <code class="language-plaintext highlighter-rouge">hosts.ini</code> file. We won’t be declaring our hosts in a <code class="language-plaintext highlighter-rouge">hosts.ini</code> file but it’s good to utilize when creating a playbook that will run in multiple webservers.</p>
+
+<p>Moving on, we’ll set the <code class="language-plaintext highlighter-rouge">hosts:</code> parameter as <code class="language-plaintext highlighter-rouge">localhost</code> as we want our playbook to execute against localhost. We don’t have to define <code class="language-plaintext highlighter-rouge">localhost</code> in our inventory, as Ansible will create an implicit one automatically.</p>
+:ET

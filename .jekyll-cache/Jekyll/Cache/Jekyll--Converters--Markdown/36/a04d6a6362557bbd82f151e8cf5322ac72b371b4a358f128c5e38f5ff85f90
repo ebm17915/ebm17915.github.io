@@ -1,0 +1,51 @@
+I"~<p>This is a quick guide for anyone interested in creating a  CI/CD pipeline that auto-updates a Lambda function every time a push is made within CodeCommit. The pipeline is a great way to automate any changes you make to your Lambda function all done within a CodeCommit repository.</p>
+
+<p><strong>Note</strong>: There are 3 types of ways to deploy your code onto AWS Lambda</p>
+
+<ul>
+  <li>Using the in-line editor provided (up to 3 MB of Lambda code storage)</li>
+  <li>Making a zipped deployment package and uploading it via console</li>
+  <li>Making a zipped package and saving it in the S3 bucket. (up to 250 MB unzipped)</li>
+</ul>
+
+<p>Preview of CI/CD Pipeline:</p>
+
+<p><strong><em>CodeCommit –&gt; CodeBuild/CodePipeline –&gt; S3 –&gt; Lambda</em></strong></p>
+
+<ol>
+  <li>You’ll want to create a CodeCommit repository dedicated to hosting your Lambda function source code.</li>
+</ol>
+
+<p><img src="https://i.imgur.com/qacL4Sv.png" alt="Imgur" /></p>
+
+<ol>
+  <li>
+    <p>Create an S3 Bucket where our Lambda source code will be zipped and stored.</p>
+  </li>
+  <li>
+    <p>Add an S3 trigger to your lambda function so whenever there is a change in the zipped Lambda code it will be called.</p>
+  </li>
+</ol>
+
+<p><img src="https://i.imgur.com/6PjTofn.png" alt="Imgur" /></p>
+
+<ol>
+  <li>
+    <p>Now you’ll want to create a CodeBuild job that knows which branch and repository to pull the source Lambda code from and create the zipped file. For this step you’ll need to use a <code class="language-plaintext highlighter-rouge">buildspec</code> file, which is essentially a script that provides the steps necessary for the CodeBuild job. Here is an example <code class="language-plaintext highlighter-rouge">buildspec</code> file:</p>
+
+    <p>build:
+ commands:
+ — cd ./deploymentDir
+ — zip -r deployment.zip *
+ — aws s3 cp deployment.zip s3://your-bucketname/location-of-zip
+ artifacts:
+ files:
+ — ./deploymentDir/deployment.zip</p>
+  </li>
+  <li>
+    <p>Finally, create a CodePipeline that will where we will set triggers on when we will run the CodeBuild step.</p>
+  </li>
+</ol>
+
+<p><img src="https://i.imgur.com/HFWC4pP.png" alt="Imgur" /></p>
+:ET

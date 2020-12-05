@@ -1,0 +1,15 @@
+I"�<p>This week I took a look into deploying static websites (such as this blog) into AWS using GitHub Actions. In my previous blogs I discussed using GitHub Actions in a previous blog as means of a simple CI/CD process to quickly add any desired changes to the blog whether it’d be a new theme or posts. I came across an amateur blog post that can help you deploy static sites into an S3 bucket if you want your site hosted within the cloud. I’ll share a few pages that you can look into to help you migrate your site onto the AWS platform.</p>
+
+<p>This blog <a href="https://blog.kylegalbraith.com/2019/12/09/deploying-your-static-websites-to-aws-in-style-using-github-actions/">page</a> explains the steps necessary to get your site up and running on an S3 bucket with full deployment automation through the use of an S3 GitHub Action. Once you set up your GitHub repository with the proper AWS credentials you can then get started with the S3-sync GitHub Action. I personally found this workflow to be quite similar to that of the jekyll one I’ve been using to deploy my blog site. Essentially what you’re doing with the workflow.yml file is that once you initialize a build sequence your static site will then be pushed into a designated S3 bucket within your AWS account.</p>
+
+<p>S3 buckets are an excellent way to store any files, images, static websites, etc that you need quick access too. There are other S3 tiers available such as AWS S3 Glacier if you don’t plan on frequently accessing your data.</p>
+
+<p>Here is a list of tools used:</p>
+
+<p><a href="https://github.com/marketplace/actions/s3-sync">GitHub Action S3-sync</a></p>
+
+<p><a href="https://aws.amazon.com/s3/">AWS S3</a></p>
+
+<p><a href="https://aws.amazon.com/s3/storage-classes/">S3 Tiers</a></p>
+
+:ET

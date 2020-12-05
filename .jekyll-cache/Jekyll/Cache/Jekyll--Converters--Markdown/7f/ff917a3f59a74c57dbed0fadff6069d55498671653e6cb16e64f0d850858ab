@@ -1,0 +1,43 @@
+I"�<p><img src="https://i.imgur.com/2QlfQeR.jpg" alt="Imgur" /></p>
+
+<p>Docker is a great virtualization tool used by developers to create and deliver distributed applications in packages called containers. As you create bigger and more robust applications you’ll find yourself seeking a production ready environment to host your Docker images. AWS ECR (Elastic Container Registry) is a commonly used solution for developers who want to store their images in a cloud-based infrastructure. Other used container registries are Docker Hub and Google Container Registry.</p>
+
+<p>For those who are unfamiliar with Docker check out their website <a href="https://www.docker.com/">here</a> to get started.</p>
+
+<p><strong>Installing Docker on an Amazon EC2 instance</strong></p>
+
+<p>If you don’t plan on running Docker on a local development system, I recommend installing it on an EC2 instance. For this tutorial I’ll be using the Amazon Linux 2 AMI to maintain <em>free tier eligibility</em>.</p>
+
+<ol>
+  <li>After you provision and gain access to your instance, you’ll want to this command to update installed packages on your instance:<br />
+<code class="language-plaintext highlighter-rouge">sudo yum update -y</code><br /></li>
+  <li>In order to install the most recent edition of Docker run:<br />
+<code class="language-plaintext highlighter-rouge">sudo amazon-linux-extras install docker</code><br /></li>
+  <li>Finally, to start up Docker use:<br />
+<code class="language-plaintext highlighter-rouge">sudo service docker start</code><br /></li>
+</ol>
+
+<p>Play around with Docker and see if you can create your very first Docker image. Start by running the command <code class="language-plaintext highlighter-rouge">touch Dockerfile</code> to create a Dockerfile within the directory. Here is a snippet of an example Dockerfile:</p>
+
+<p><img src="https://i.imgur.com/UddTAmK.png" alt="Imgur" /></p>
+
+<p><strong>Pushing your Docker image onto Amazon ECR</strong></p>
+
+<p><em>Note:</em> Make sure you have <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS CLI</a> installed and configured before moving on.</p>
+
+<p>Once you have Docker images ready to be pushed onto Amazon ECR, follow these steps:</p>
+
+<ol>
+  <li>Create an ECR repository to store your Docker image using this command as an example:<br />
+<code class="language-plaintext highlighter-rouge">aws ecr create-repository --repository-name example-repository --region region</code><br /></li>
+  <li>You’ll notice a <code class="language-plaintext highlighter-rouge">repositoryUri</code> in the output. Tag the image with the <code class="language-plaintext highlighter-rouge">repositoryUri</code> value:<br />
+<code class="language-plaintext highlighter-rouge">docker tag example aws_account_id.dkr.ecr.region.amazonaws.com/example-repository</code><br /></li>
+  <li>Afterwards, you’ll need to authenticate yourself to gain access to the repository. Use this command as an example but replace the appropriate credentials:<br />
+<code class="language-plaintext highlighter-rouge">aws ecr get-login-password | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com</code><br /></li>
+  <li>Once you’ve authenticated yourself, push your Docker image to Amazon ECR with the <code class="language-plaintext highlighter-rouge">repositoryUri</code> value from step 2. <br />
+<code class="language-plaintext highlighter-rouge">docker push aws_account_id.dkr.ecr.region.amazonaws.com/example-repository</code></li>
+</ol>
+
+<p>Remember to delete any unused repositories to minimize costs! I’ll cover deploying Docker containers onto Amazon ECS (Elastic Container Service) in a future post.</p>
+
+:ET

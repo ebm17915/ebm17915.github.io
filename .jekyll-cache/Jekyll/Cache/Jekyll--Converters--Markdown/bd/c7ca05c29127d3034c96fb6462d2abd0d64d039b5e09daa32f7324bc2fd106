@@ -1,0 +1,41 @@
+I"x<p>Amazon Web Services is a great tool for any developers who want to get started with cloud computing services but each service has their own unique costs. Luckily for eligible services, AWS provides a Free Tier so users can enjoy the services AWS has at no cost.</p>
+
+<p>On the <em>Billing &amp; Cost Management Dashboard</em> you can see an overview of <strong>Top Free Tier Services by Usage</strong> which highlights the highest percentage of month-to-date usage against Free Tier limits based on service.</p>
+
+<p><img src="https://i.imgur.com/VTUSMFr.png" alt="Imgur" /></p>
+
+<p>AWS automatically provides alerts through AWS budgets that notify users by email when you exceed 85% of your free tier limits for each service. For additional visibility, you can decrease or increase the alert threshold by creating a new usage budget.</p>
+
+<p><strong>Note</strong>: The alerts only cover non-expiring AWS Free Tier offerings, such as 1 million publishes of Amazon SNS or 10 GB of storage retrievals through Amazon Glacier (Glacier API only). They also cover offerings that expire after 12 months, which includes 30 GB of SSD/Magnetic Amazon EBS storage, 500 MB per month of Amazon ECR storage, and much more.</p>
+
+<p>Check out all the offerings AWS provides on their Free Tier <a href="https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&amp;all-free-tier.sort-order=asc&amp;awsm.page-all-free-tier=1">here</a>.</p>
+
+<h3>Setting Up Usage Alerts</h3>
+
+<p>It’s quite simple to setup a variety of alerts to manage the costs or usage of your services. This is especially important for companies or users who are mindful of their costs and need to set a budget. For this guide we’ll be creating a usage budget to notify when a service exceeds a certain threshold.</p>
+
+<ol>
+  <li>From the menu on the left, select <strong>Budgets</strong> then choose <strong>Create budget</strong>. On the <strong>Create budget</strong> page, choose <strong>Usage</strong> as the <strong>Budget Type</strong>.</li>
+</ol>
+
+<p><img src="https://i.imgur.com/uB6CuGZ.png" alt="Imgur" /></p>
+
+<ol>
+  <li>On the <strong>Set budget details</strong> page, edit to your specifications. Add as much usage type groups as needed. Here’s an example snippet of a budget tracking RDS hours:</li>
+</ol>
+
+<p><img src="https://i.imgur.com/hXCa3UW.png" alt="Imgur" /></p>
+
+<ol>
+  <li>Once on the <strong>Configure thresholds</strong> page, you can then configure your usage threshold. For example, on a budget of 100 hours on RDS you can send an email alert once 75 hours has been reached. You can also set up your the specific notifications you’d like to receive, such as Amazon SNS or Chatbot Alerts.</li>
+</ol>
+
+<p><img src="https://i.imgur.com/Bty2jZm.png" alt="Imgur" /></p>
+
+<ol>
+  <li>Review and confirm your budget.</li>
+</ol>
+
+<p>Make sure to take advantage of all the services Amazon has to offer on their AWS Free Tier.</p>
+
+:ET

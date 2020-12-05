@@ -1,0 +1,41 @@
+I"=
+<p>The sneaker flipping community has been around for years but as of recently there has been a surge in demand for dedicated “sneaker servers and proxies” that assist users in purchasing these limited goods. These sneaker servers host automation software provisioned to auto-purchasing limited shoe supplies off major footwear sites. This tutorial will serve as a guide to any passionate “sneakerhead” or anyone interested in hosting a low latency server.</p>
+
+<p><strong><em>Note</em></strong>: This is a guide for creating servers that can run large amount of tasks at high speeds. Follow other sources for the creation/purchasing of auto-purchasing software (bots).</p>
+
+<h3>Creating the Sneaker Server EC2 Instance</h3>
+
+<ol>
+  <li>Log onto your AWS Console and launch a new EC2 instance.<br /></li>
+  <li>For the sake of compatibility with most popular auto-purchasing software, select <strong><em>Microsoft Windows Server 2016 Base</em></strong>. <br /></li>
+</ol>
+
+<p><img src="https://i.imgur.com/gzFRybG.png" alt="Imgur" /><br /></p>
+
+<ol>
+  <li>Most automation software need dedicated storage and processing power to run tasks at low latency. The most optimal options are to run instance types of <strong><em>m5ad.xlarge</em></strong> and above. For demonstration purposes, select <strong><em>m5ad.large</em></strong>.</li>
+</ol>
+
+<p><img src="https://i.imgur.com/WzIj1oB.png" alt="Imgur" /><br /></p>
+
+<ol>
+  <li>
+    <p>Configure preferential VPC and Subnet setting. This section is important as it’s necessary to gather information on the location of sneaker footwear site data centers. You’ll want to select a region and area zone in the same area to minimize latency. Then, <strong><em>“launch”</em></strong> your instance. <br /></p>
+  </li>
+  <li>
+    <p>Connect to your instance by selecting <strong><em>Connect</em></strong> and navigating to the <strong><em>RDP client</em></strong>. Upload the unique key pair used upon creation and generate the password necessary to access the instance. <strong>Note</strong> Mac needs Parallels or other RDP client software to access the instance but Windows can handle it just fine. <br /></p>
+  </li>
+  <li>
+    <p>Once the instance is accessed, navigate to <strong><em>Server Manager</em></strong> and disable <strong><em>Windows Defender</em></strong>. This is partly due to some software not properly functioning during task creation. <br /></p>
+  </li>
+</ol>
+
+<p><img src="https://i.imgur.com/5LWHf3U.png" alt="Imgur" /></p>
+
+<ol>
+  <li>Install all automation software. Check speeds.</li>
+</ol>
+
+<h3>Sneaker Proxies: How do they work?</h3>
+
+:ET
