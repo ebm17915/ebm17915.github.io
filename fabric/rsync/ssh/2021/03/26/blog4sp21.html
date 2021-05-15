@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 4 Spring 2021: Fabric SSH Python Module</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 4 Spring 2021: Fabric SSH Python Module | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 4 Spring 2021: Fabric SSH Python Module" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter." />
+<meta property="og:description" content="Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter." />
+<link rel="canonical" href="/fabric/rsync/ssh/2021/03/26/blog4sp21.html" />
+<meta property="og:url" content="/fabric/rsync/ssh/2021/03/26/blog4sp21.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-26T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter.","url":"/fabric/rsync/ssh/2021/03/26/blog4sp21.html","@type":"BlogPosting","headline":"Blog 4 Spring 2021: Fabric SSH Python Module","dateModified":"2021-03-26T00:00:00+00:00","datePublished":"2021-03-26T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/fabric/rsync/ssh/2021/03/26/blog4sp21.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/fabric/rsync/ssh/2021/03/26/blog4sp21.html">
+    <h2 class="post-title">Blog 4 Spring 2021: Fabric SSH Python Module</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Mar 26, 2021</div><ul class="post-categories"><li>Fabric</li><li>Rsync</li><li>SSH</li></ul></div>
+  <div class="post">
+    <p>Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter.</p>
+
+<p>Here are some example code modules:</p>
+
+<p>Run singular commands on an individual host instance <br />
+    »&gt; result = Connection(‘web1’).run(‘hostname’)
+        web1
+        »&gt; result
+        <Result cmd="hostname" exited="0"></Result></p>
+
+<p>Single commands across multiple hosts <br />
+    »&gt; from fabric import SerialGroup
+        »&gt; result = SerialGroup(‘web1’, ‘web2’).run(‘hostname’)
+        web1
+        web2
+        »&gt; # Sorting for consistency…it’s a dict!
+        »&gt; sorted(result.items())
+    (<Connection host="web1">, <Result cmd="hostname" exited="0">), ...]</Result></Connection></p>
+
+<p>Here are examples covering Fabric imported into a Python script <br />
+    import Fabric
+    »&gt; def disk_free(c):
+    …     uname = c.run(‘uname -s’, hide=True)
+    …     if ‘Linux’ in uname.stdout:
+    …         command = “df -h / | tail -n1 | awk ‘{print $5}’”
+    …         return c.run(command, hide=True).stdout.strip()
+    …     err = “No idea how to get disk space on {}!”.format(uname)
+    …     raise Exit(err)
+    …
+    »&gt; print(disk_free(Connection(‘web1’)))</p>
+
+<p>Running on multiple hosts <br />
+    »&gt; # NOTE: Same code as above!
+    »&gt; def disk_free(c):
+    …     uname = c.run(‘uname -s’, hide=True)
+    …     if ‘Linux’ in uname.stdout:
+    …         command = “df -h / | tail -n1 | awk ‘{print $5}’”
+    …         return c.run(command, hide=True).stdout.strip()
+    …     err = “No idea how to get disk space on {}!”.format(uname)
+    …     raise Exit(err)
+    …
+    »&gt; for cxn in SerialGroup(‘web1’, ‘web2’, ‘db1’):
+    …    print(“{}: {}”.format(cxn, disk_free(cxn)))
+    <Connection host="web1">: 33%
+    <Connection host="web2">: 17%
+    <Connection host="db1">: 2%</Connection></Connection></Connection></p>
+
+<p>First and foremost it’s important to understand the capabilities of this library. It’s capable of automating and provisioning multiple instances directly from your local machine. Multiple tasks may be given in a single CLI session, through the use of <code class="language-plaintext highlighter-rouge">fab build deploy</code>. Just setup a <code class="language-plaintext highlighter-rouge">fabfile</code> and setup hostname initialization to connect to your servers/instances.</p>
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 12: How to Set Up a Low Latency Sneaker Server on AWS</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 12: How to Set Up a Low Latency Sneaker Server on AWS | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 12: How to Set Up a Low Latency Sneaker Server on AWS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The sneaker flipping community has been around for years but as of recently there has been a surge in demand for dedicated “sneaker servers and proxies” that assist users in purchasing these limited goods. These sneaker servers host automation software provisioned to auto-purchasing limited shoe supplies off major footwear sites. This tutorial will serve as a guide to any passionate “sneakerhead” or anyone interested in hosting a low latency server." />
+<meta property="og:description" content="The sneaker flipping community has been around for years but as of recently there has been a surge in demand for dedicated “sneaker servers and proxies” that assist users in purchasing these limited goods. These sneaker servers host automation software provisioned to auto-purchasing limited shoe supplies off major footwear sites. This tutorial will serve as a guide to any passionate “sneakerhead” or anyone interested in hosting a low latency server." />
+<link rel="canonical" href="/aws/proxy/ec2/terraform/2020/12/04/blog12.html" />
+<meta property="og:url" content="/aws/proxy/ec2/terraform/2020/12/04/blog12.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-04T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"The sneaker flipping community has been around for years but as of recently there has been a surge in demand for dedicated “sneaker servers and proxies” that assist users in purchasing these limited goods. These sneaker servers host automation software provisioned to auto-purchasing limited shoe supplies off major footwear sites. This tutorial will serve as a guide to any passionate “sneakerhead” or anyone interested in hosting a low latency server.","url":"/aws/proxy/ec2/terraform/2020/12/04/blog12.html","@type":"BlogPosting","headline":"Blog 12: How to Set Up a Low Latency Sneaker Server on AWS","dateModified":"2020-12-04T00:00:00+00:00","datePublished":"2020-12-04T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/aws/proxy/ec2/terraform/2020/12/04/blog12.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/aws/proxy/ec2/terraform/2020/12/04/blog12.html">
+    <h2 class="post-title">Blog 12: How to Set Up a Low Latency Sneaker Server on AWS</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Dec 4, 2020</div><ul class="post-categories"><li>AWS</li><li>Proxy</li><li>EC2</li><li>Terraform</li></ul></div>
+  <div class="post">
+    <p>The sneaker flipping community has been around for years but as of recently there has been a surge in demand for dedicated “sneaker servers and proxies” that assist users in purchasing these limited goods. These sneaker servers host automation software provisioned to auto-purchasing limited shoe supplies off major footwear sites. This tutorial will serve as a guide to any passionate “sneakerhead” or anyone interested in hosting a low latency server.</p>
+
+<p><strong><em>Note</em></strong>: This is a guide for creating servers that can run large amount of tasks at high speeds. Follow other sources for the creation/purchasing of auto-purchasing software (bots).</p>
+
+<h3>Creating the Sneaker Server EC2 Instance</h3>
+
+<ol>
+  <li>Log onto your AWS Console and launch a new EC2 instance.<br /></li>
+  <li>For the sake of compatibility with most popular auto-purchasing software, select <strong><em>Microsoft Windows Server 2016 Base</em></strong>. <br />
+<img src="https://i.imgur.com/gzFRybG.png" alt="Imgur" /><br /></li>
+  <li>Most automation software need dedicated storage and processing power to run tasks at low latency. The most optimal options are to run instance types of <strong><em>m5ad.xlarge</em></strong> and above. For demonstration purposes, select <strong><em>m5ad.large</em></strong>.<br />
+<img src="https://i.imgur.com/WzIj1oB.png" alt="Imgur" /><br /></li>
+  <li>
+    <p>Configure preferential VPC and Subnet setting. This section is important as it’s necessary to gather information on the location of data centers of the desired footwear sites. Select a region and area zone with the same proximity of the data center to minimize latency (closer it is the faster it becomes). For example, if a website is being hosted in California then select “us-west-1” or another nearby region. Once selected, <strong><em>“launch”</em></strong> the instance. <br /></p>
+  </li>
+  <li>
+    <p>Connect to your instance by selecting <strong><em>Connect</em></strong> and navigating to the <strong><em>RDP client</em></strong>. Upload the unique key pair used upon creation and generate the password necessary to access the instance. <strong>Note</strong> Mac needs Parallels or other RDP client software to access the instance but Windows can handle it just fine. <br /></p>
+  </li>
+  <li>Once the instance is accessed, navigate to <strong><em>Server Manager</em></strong> and disable <strong><em>Windows Defender</em></strong>. This is partly due to some software not properly functioning during task creation. <br />
+<img src="https://i.imgur.com/5LWHf3U.png" alt="Imgur" /><br /></li>
+  <li>Optional: Disable <strong><em>IE Enhanced Security Configuration</em></strong> if your desired web browser isn’t Internet Explorer. <br />
+<img src="https://i.imgur.com/Bs8VzOj.png" alt="Imgur" /><br /></li>
+  <li>Install all automation software. Check speeds.</li>
+</ol>
+
+<h3>Sneaker Proxies: How do they work?</h3>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

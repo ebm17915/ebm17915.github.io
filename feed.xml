@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-15T20:25:05+00:00</updated><id>/feed.xml</id><title type="html">Earl’s Super Duper Fantastic Insane CIT 480 Blog</title><subtitle>This is a blog dedicated to sharing technical articles and tools that I come across!</subtitle><entry><title type="html">Blog 10 Spring 2021: Expanding Upon Python CSV Data Formatting</title><link href="/python/csv/2021/05/07/blog10sp21.html" rel="alternate" type="text/html" title="Blog 10 Spring 2021: Expanding Upon Python CSV Data Formatting" /><published>2021-05-07T00:00:00+00:00</published><updated>2021-05-07T00:00:00+00:00</updated><id>/python/csv/2021/05/07/blog10sp21</id><content type="html" xml:base="/python/csv/2021/05/07/blog10sp21.html">&lt;p&gt;Information Systems and Data Analysts are always facing thousands upon thousands of data entries everyday with the given task of framing each entry. Sometimes individuals from management request data in the form of CSVs as it allows for simple access on software such as Google Spreadsheets or Microsoft Excel. A simple CSV file is a friendlier way of presenting data rather than traditional forms like JSON as it allows for corporate to easily read.&lt;/p&gt;
+
+&lt;p&gt;This will be a quick guide on creating a script that utilizes Python CSV and Pandas data frame modules.&lt;/p&gt;
+
+&lt;h3&gt; Using Python CSV &lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a new executable python script and import the csv Python package.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/usr/local/bin/python3
+import sys
+import os
+import csv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In the Python function make sure to call in the list of data entries that will be passed.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;list_of_entries = [&quot;red&quot;, &quot;blue&quot;, 2, &quot;shoes&quot;, 4.4]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Proceed to writing a function that formats the data into CSV. Feel free to follow module documentation on this &lt;a href=&quot;https://docs.python.org/3/library/csv.html&quot;&gt;page.&lt;/a&gt; &lt;br /&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;with open('eggs.csv', 'w', newline='') as csvfile:
+ spamwriter = csv.writer(csvfile, delimiter=' ',
+                         quoting=csv.QUOTE_NONNUMERIC)
+ spamwriter.writerow(list_of_entries)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Desired output should meet any listed parameters. &lt;br /&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terminal$: ./script.py
+&quot;red&quot;,&quot;blue&quot;,2,&quot;shoes,4.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt; Using Python Pandas &lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Alternative choice is to use the Python Pandas module. Proceed by importing the module. &lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pandas as pd
+
+df = pd.read_csv('sample.csv', index_col=0)
+print(df)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Continue by writing a script that either reads a pre-existing file or list.
+```
+cities = pd.DataFrame([[‘Sacramento’, ‘California’], [‘Miami’, ‘Florida’]], columns=[‘City’, ‘State’])
+cities.to_csv(‘cities.csv’)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;df = pd.read_csv(‘cities.csv’)
+print(df)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+3. Example output 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Unnamed: 0        City       State
+0           0  Sacramento  California
+1           1       Miami     Florida
+```&lt;/p&gt;</content><author><name></name></author><summary type="html">Information Systems and Data Analysts are always facing thousands upon thousands of data entries everyday with the given task of framing each entry. Sometimes individuals from management request data in the form of CSVs as it allows for simple access on software such as Google Spreadsheets or Microsoft Excel. A simple CSV file is a friendlier way of presenting data rather than traditional forms like JSON as it allows for corporate to easily read.</summary></entry><entry><title type="html">Blog 9 Spring 2021: APIs and Python</title><link href="/python/api/2021/04/30/sp21blog9.html" rel="alternate" type="text/html" title="Blog 9 Spring 2021: APIs and Python" /><published>2021-04-30T00:00:00+00:00</published><updated>2021-04-30T00:00:00+00:00</updated><id>/python/api/2021/04/30/sp21blog9</id><content type="html" xml:base="/python/api/2021/04/30/sp21blog9.html">&lt;p&gt;APIs (Application programming interface) can be interpreted as a composition of rules that enables developers and users to access an external service on web through our systems. Thus, an API sets certain formats which can access the service and the data to and from a model.&lt;/p&gt;
+
+&lt;p&gt;Through the use of Python, one can access this API data source through specific libraries.&lt;/p&gt;
+
+&lt;h3&gt;Types of API Requests&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Command&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GET&lt;/td&gt;
+      &lt;td&gt;It enables the users to fetch the data from the APIs onto their system in a specific format that is usually JSON&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;POST&lt;/td&gt;
+      &lt;td&gt;This command enables us to add data to the API i.e. to the service on web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DELETE&lt;/td&gt;
+      &lt;td&gt;It enables us to delete certain information from the API service on web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PUT&lt;/td&gt;
+      &lt;td&gt;Using PUT command, we can update an existing data or information in the API service on web.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Status/Response Codes&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;200&lt;/td&gt;
+      &lt;td&gt;OK. It means we have a healthy connection with the API on web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;204&lt;/td&gt;
+      &lt;td&gt;It depicts that we can successfully made a connection to the API, but did not return any data from the service.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;401&lt;/td&gt;
+      &lt;td&gt;Authentication failed!&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;403&lt;/td&gt;
+      &lt;td&gt;Access is forbidden by the API service.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;404&lt;/td&gt;
+      &lt;td&gt;The requested API service is not found on the server/web.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;500&lt;/td&gt;
+      &lt;td&gt;Internal Server Error has occurred.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Connecting to an API with Python&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Import proper libraries
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import requests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Perform an action to connect to the API and print response code
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;response_API = requests.get('https://www.askpython.com/')
+print(response_API.status_code)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">APIs (Application programming interface) can be interpreted as a composition of rules that enables developers and users to access an external service on web through our systems. Thus, an API sets certain formats which can access the service and the data to and from a model.</summary></entry><entry><title type="html">Blog 8 Spring 2021: Python Script to Generate CSV Rows</title><link href="/python/csv/database/2021/04/23/sp21blog8.html" rel="alternate" type="text/html" title="Blog 8 Spring 2021: Python Script to Generate CSV Rows" /><published>2021-04-23T00:00:00+00:00</published><updated>2021-04-23T00:00:00+00:00</updated><id>/python/csv/database/2021/04/23/sp21blog8</id><content type="html" xml:base="/python/csv/database/2021/04/23/sp21blog8.html">&lt;p&gt;It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods.&lt;/p&gt;
+
+&lt;h3&gt; Method 1: For loop &lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a new python script and import any necessary modules
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/usr/local/bin/python3
+import sys
+import os
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Depending how you call the list of data entries, create a function that iterates through all the entries and outputs a csv formatted row.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;csv = [data1, data2, data3, data4, data5]
+csv_row = &quot;&quot;
+for item in csv:
+if type(item) = str:
+   csv_row += &quot;\&quot;&quot; + item + &quot;\&quot;, &quot;
+else:
+   csv_row += str(item) + &quot;,&quot;
+print(csv_row)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Data should be outputted like so:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;data1&quot;,&quot;data2&quot;,&quot;data3&quot;,&quot;data4&quot;,&quot;data5&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt; Method 2: Import the built-in Python CSV module &lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Import python csv module
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#!/usr/local/bin/python3
+import sys
+import os
+import csv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a function that creates a csv file with the data imported. Here is an example
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;with open('eggs.csv', 'w', newline='') as csvfile:
+ spamwriter = csv.writer(csvfile, delimiter=' ',
+                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
+ spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+ spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods.</summary></entry><entry><title type="html">Blog 7 Spring 2021:</title><link href="/gcp/cloudsql/2021/04/16/sp21blog7.html" rel="alternate" type="text/html" title="Blog 7 Spring 2021: " /><published>2021-04-16T00:00:00+00:00</published><updated>2021-04-16T00:00:00+00:00</updated><id>/gcp/cloudsql/2021/04/16/sp21blog7</id><content type="html" xml:base="/gcp/cloudsql/2021/04/16/sp21blog7.html">&lt;p&gt;Setting up databases is a common procedure when managing infrastructure. Meeting company/project demands is&lt;/p&gt;</content><author><name></name></author><summary type="html">Setting up databases is a common procedure when managing infrastructure. Meeting company/project demands is</summary></entry><entry><title type="html">Blog 6 Spring 2021: Difference between Python 2 and Python 3</title><link href="/python/python3/2021/04/09/sp21blog6.html" rel="alternate" type="text/html" title="Blog 6 Spring 2021: Difference between Python 2 and Python 3" /><published>2021-04-09T00:00:00+00:00</published><updated>2021-04-09T00:00:00+00:00</updated><id>/python/python3/2021/04/09/sp21blog6</id><content type="html" xml:base="/python/python3/2021/04/09/sp21blog6.html">&lt;p&gt;The most popular programming language of today’s developers is Python. The high-level object oriented programming language was founded by Guido van Rossum. Large companies such as Google and Youtube are built on top of Python as it is relatively easy to maintain but has its own fair share of issues. The release of Python3 contains solutions for the commonly found issues with Python.&lt;/p&gt;
+
+&lt;h3&gt;Differences between Python2 and Python3&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Python2&lt;/th&gt;
+      &lt;th&gt;Python3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Python 2 is a version of Python programming language which will get minimum support and additional features in future&lt;/td&gt;
+      &lt;td&gt;Python 3 is a version of Python programming language which is continually adding new features and bugs fixed.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;print “Hello World”&lt;/td&gt;
+      &lt;td&gt;print (“Hello World”)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7.0 / 2. 0.&lt;/td&gt;
+      &lt;td&gt;7 / 2 will give 3.5.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><summary type="html">The most popular programming language of today’s developers is Python. The high-level object oriented programming language was founded by Guido van Rossum. Large companies such as Google and Youtube are built on top of Python as it is relatively easy to maintain but has its own fair share of issues. The release of Python3 contains solutions for the commonly found issues with Python.</summary></entry><entry><title type="html">Blog 5 Spring 2021: Getting Started with Kubernetes (MAC)</title><link href="/kubernetes/minikube/2021/04/02/blog5sp21.html" rel="alternate" type="text/html" title="Blog 5 Spring 2021: Getting Started with Kubernetes (MAC)" /><published>2021-04-02T00:00:00+00:00</published><updated>2021-04-02T00:00:00+00:00</updated><id>/kubernetes/minikube/2021/04/02/blog5sp21</id><content type="html" xml:base="/kubernetes/minikube/2021/04/02/blog5sp21.html">&lt;p&gt;According to the documentation, Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.&lt;/p&gt;
+
+&lt;p&gt;Running containers in production has always been the up and coming way to manage production workload. Aside from managing a variety of nodes through a singular manager, it can minimize costs. This will be a guide to setup Kubernetes on a Mac environment.&lt;/p&gt;
+
+&lt;h3&gt;Installing Kubernetes on Mac&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, ensure that the Homebrew package manager is installed. Then run the command `brew tap homebrew/cask’ &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/HhDq300.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proceed to install Docker for Mac which is used to create, manage, and run containers. This will allow us to create containers that will run in our Kubernetes Pods. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install VirtualBox for Mac. Either install directly from the website or using this homebrew command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew cask install virtualbox&lt;/code&gt;. This will allow you to run virtual machines on your Mac. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install kubectl which is a command-line interface that can interact with Kubernetes. Using homebrew, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install kubectl&lt;/code&gt; &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/dSb1utL.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finally install Minikube which will run a Kubernetes cluster with a single node. Use the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.18.1/minikube-darwin-amd64&lt;/code&gt; which is using the most recent update for the MAC distro. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Continue by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;minikube start&lt;/code&gt; which will then start your cluster. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/djuwLuw.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">According to the documentation, Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.</summary></entry><entry><title type="html">Blog 4 Spring 2021: Fabric SSH Python Module</title><link href="/fabric/rsync/ssh/2021/03/26/blog4sp21.html" rel="alternate" type="text/html" title="Blog 4 Spring 2021: Fabric SSH Python Module" /><published>2021-03-26T00:00:00+00:00</published><updated>2021-03-26T00:00:00+00:00</updated><id>/fabric/rsync/ssh/2021/03/26/blog4sp21</id><content type="html" xml:base="/fabric/rsync/ssh/2021/03/26/blog4sp21.html">&lt;p&gt;Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter.&lt;/p&gt;
+
+&lt;p&gt;Here are some example code modules:&lt;/p&gt;
+
+&lt;p&gt;Run singular commands on an individual host instance &lt;br /&gt;
+    »&amp;gt; result = Connection(‘web1’).run(‘hostname’)
+        web1
+        »&amp;gt; result
+        &lt;Result cmd=&quot;hostname&quot; exited=&quot;0&quot;&gt;&lt;/Result&gt;&lt;/p&gt;
+
+&lt;p&gt;Single commands across multiple hosts &lt;br /&gt;
+    »&amp;gt; from fabric import SerialGroup
+        »&amp;gt; result = SerialGroup(‘web1’, ‘web2’).run(‘hostname’)
+        web1
+        web2
+        »&amp;gt; # Sorting for consistency…it’s a dict!
+        »&amp;gt; sorted(result.items())
+    (&lt;Connection host=&quot;web1&quot;&gt;, &lt;Result cmd=&quot;hostname&quot; exited=&quot;0&quot;&gt;), ...]&lt;/Result&gt;&lt;/Connection&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are examples covering Fabric imported into a Python script &lt;br /&gt;
+    import Fabric
+    »&amp;gt; def disk_free(c):
+    …     uname = c.run(‘uname -s’, hide=True)
+    …     if ‘Linux’ in uname.stdout:
+    …         command = “df -h / | tail -n1 | awk ‘{print $5}’”
+    …         return c.run(command, hide=True).stdout.strip()
+    …     err = “No idea how to get disk space on {}!”.format(uname)
+    …     raise Exit(err)
+    …
+    »&amp;gt; print(disk_free(Connection(‘web1’)))&lt;/p&gt;
+
+&lt;p&gt;Running on multiple hosts &lt;br /&gt;
+    »&amp;gt; # NOTE: Same code as above!
+    »&amp;gt; def disk_free(c):
+    …     uname = c.run(‘uname -s’, hide=True)
+    …     if ‘Linux’ in uname.stdout:
+    …         command = “df -h / | tail -n1 | awk ‘{print $5}’”
+    …         return c.run(command, hide=True).stdout.strip()
+    …     err = “No idea how to get disk space on {}!”.format(uname)
+    …     raise Exit(err)
+    …
+    »&amp;gt; for cxn in SerialGroup(‘web1’, ‘web2’, ‘db1’):
+    …    print(“{}: {}”.format(cxn, disk_free(cxn)))
+    &lt;Connection host=&quot;web1&quot;&gt;: 33%
+    &lt;Connection host=&quot;web2&quot;&gt;: 17%
+    &lt;Connection host=&quot;db1&quot;&gt;: 2%&lt;/Connection&gt;&lt;/Connection&gt;&lt;/Connection&gt;&lt;/p&gt;
+
+&lt;p&gt;First and foremost it’s important to understand the capabilities of this library. It’s capable of automating and provisioning multiple instances directly from your local machine. Multiple tasks may be given in a single CLI session, through the use of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fab build deploy&lt;/code&gt;. Just setup a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fabfile&lt;/code&gt; and setup hostname initialization to connect to your servers/instances.&lt;/p&gt;</content><author><name></name></author><summary type="html">Fabric is a high level Python module built on top of Paramiko to execute hell commands remotely over SSH. Those familiar with Paramiko are able to understand the underlying similarities between the two SSH modules. Similar to Paramiko, one can import the library into a Python script or install it directly to their Python interpreter.</summary></entry><entry><title type="html">Blog 3 Spring 2021: Rsync Command</title><link href="/rsync/linux/2021/03/12/blog3sp21.html" rel="alternate" type="text/html" title="Blog 3 Spring 2021: Rsync Command" /><published>2021-03-12T00:00:00+00:00</published><updated>2021-03-12T00:00:00+00:00</updated><id>/rsync/linux/2021/03/12/blog3sp21</id><content type="html" xml:base="/rsync/linux/2021/03/12/blog3sp21.html">&lt;p&gt;Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults.&lt;/p&gt;
+
+&lt;p&gt;On Unix-type operating systems, the rsync command synchronizes files from a source to a target, on a local machine or over a secure network connection. It’s an excellent substitute for rapidly copying files to a destination server. I’ll be showing a few commands and options.&lt;/p&gt;
+
+&lt;h3&gt;Command Syntax Examples&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Command&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rsync [OPTION…] SRC… [DEST]&lt;/td&gt;
+      &lt;td&gt;Local use&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rsync [OPTION…] [USER@]HOST:SRC… [DEST]&lt;/td&gt;
+      &lt;td&gt;Pulling from a remote host&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rsync [OPTION…] SRC… [USER@]HOST:DEST&lt;/td&gt;
+      &lt;td&gt;Push to a remote host&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Command Examples&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Example&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rsync -a -v –progress /test/dir/ ubuntu@testhostname:/test/dir2/&lt;/td&gt;
+      &lt;td&gt;Copies local directory “/test/dir/” to the remote host “testhostname”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Rsync Options&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Options&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-v, –verbose&lt;/td&gt;
+      &lt;td&gt;increase verbosity&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-q, –quiet&lt;/td&gt;
+      &lt;td&gt;suppress non-error messages&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-c, –checksum&lt;/td&gt;
+      &lt;td&gt;Check for errors&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-a, –archive&lt;/td&gt;
+      &lt;td&gt;archive mode&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-n, –dry-run&lt;/td&gt;
+      &lt;td&gt;Perform a trial run of the command with no changes done&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“sync -e”&lt;/td&gt;
+      &lt;td&gt;Pass rsync command into a remote host&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;–ignore-errors&lt;/td&gt;
+      &lt;td&gt;Ignore any present errors&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-h, –human-readable&lt;/td&gt;
+      &lt;td&gt;output numbers in a human-readable format&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;–progress&lt;/td&gt;
+      &lt;td&gt;Show progress of rsync command output&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><summary type="html">Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults.</summary></entry><entry><title type="html">Blog 2 Spring 2021: Adding Users and Navigating IAMs on GCP</title><link href="/gcp/iam/2021/03/05/blog2sp21.html" rel="alternate" type="text/html" title="Blog 2 Spring 2021: Adding Users and Navigating IAMs on GCP" /><published>2021-03-05T00:00:00+00:00</published><updated>2021-03-05T00:00:00+00:00</updated><id>/gcp/iam/2021/03/05/blog2sp21</id><content type="html" xml:base="/gcp/iam/2021/03/05/blog2sp21.html">&lt;p&gt;Hosting a team application project on the cloud comes with their own unique set of challenges. This varies from account management, roles, and security. Luckily, most cloud computing providers have services dedicated to managing users and roles. This will be a guide to adding users to your Google Cloud Platform project and information detailing the IAM section of GCP.&lt;/p&gt;
+
+&lt;h3&gt;Adding Users to the GCP Project&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Navigate to the “IAM &amp;amp; Admin” section on the left-hand navigation pane. Select the IAM tab and select “+Add”. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add members to the project by adding their Gmail addresses. &lt;strong&gt;Note&lt;/strong&gt; Email addresses and domains must be associated with an active Google Account, G Suite account, or Cloud Identity account. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/RJ2xlah.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now select from a wide array of pre-set roles. The “Editor” role is a simple role that provides members in a group access to all GCP services. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/Jsh3OW6.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Alongside attaching a role to a user, conditions can be set which allows for a schedule time to access services or types of services allowed.&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/xRdwYPv.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;All the different types of “Roles” available in the IAM section gives users the necessary tools to manage their members. This allows for greater security and chance for expensive billing errors. Greatly enough, owners can create unique roles using these preset roles to match project specifications. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/CdtXSfu.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Hosting a team application project on the cloud comes with their own unique set of challenges. This varies from account management, roles, and security. Luckily, most cloud computing providers have services dedicated to managing users and roles. This will be a guide to adding users to your Google Cloud Platform project and information detailing the IAM section of GCP.</summary></entry><entry><title type="html">Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform</title><link href="/gcp/budgets/costs/2021/02/26/blog1sp21.html" rel="alternate" type="text/html" title="Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform" /><published>2021-02-26T00:00:00+00:00</published><updated>2021-02-26T00:00:00+00:00</updated><id>/gcp/budgets/costs/2021/02/26/blog1sp21</id><content type="html" xml:base="/gcp/budgets/costs/2021/02/26/blog1sp21.html">&lt;p&gt;Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert.&lt;/p&gt;
+
+&lt;h3&gt;Creating the Project Budget and Alerts&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;First, select the desired project then proceed to the “Billing” section on the left-hand navigation pane. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/Abd8sLC.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Navigate to the “Budgets &amp;amp; alerts” tab and select “Create Budget”. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Fill out the budget information to meet project specifications. Project managers can set the specific services the budget applies to and to add any applicable discounts/credits. The cost trend chart shown below, shows a summarized bar-chart view of the project’s cost in the past 12 months. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/R4iKPER.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proceed to the “Amount” section of the process and choose the “Budget type”. Once selected set the “Target amount”. &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/9iNsZn4.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Move along to the “Actions” section. This section sets alert thresholds that will then email members on a list if a spend exceeds a specified amount. Make sure to specify the method of notification. Google Cloud can notify teams through direct email or can send messages to a channel within a monitoring workspace &lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/bSvDS8q.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click “Finish” and verify the new budget creation inside the “Billing” section of the project. &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For a more programmatic approach feel free to use Cloud Billing Budget API to setup a project budget. This will be covered in the next article.&lt;/p&gt;</content><author><name></name></author><summary type="html">Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert.</summary></entry></feed>

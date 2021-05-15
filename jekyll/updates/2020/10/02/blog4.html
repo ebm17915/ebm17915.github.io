@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 4: Deploy Static Sites into AWS with GitHub Actions</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 4: Deploy Static Sites into AWS with GitHub Actions | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 4: Deploy Static Sites into AWS with GitHub Actions" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This week I took a look into deploying static websites (such as this blog) into AWS using GitHub Actions. In my previous blogs I discussed using GitHub Actions in a previous blog as means of a simple CI/CD process to quickly add any desired changes to the blog whether it’d be a new theme or posts. I came across an amateur blog post that can help you deploy static sites into an S3 bucket if you want your site hosted within the cloud. I’ll share a few pages that you can look into to help you migrate your site onto the AWS platform." />
+<meta property="og:description" content="This week I took a look into deploying static websites (such as this blog) into AWS using GitHub Actions. In my previous blogs I discussed using GitHub Actions in a previous blog as means of a simple CI/CD process to quickly add any desired changes to the blog whether it’d be a new theme or posts. I came across an amateur blog post that can help you deploy static sites into an S3 bucket if you want your site hosted within the cloud. I’ll share a few pages that you can look into to help you migrate your site onto the AWS platform." />
+<link rel="canonical" href="/jekyll/updates/2020/10/02/blog4.html" />
+<meta property="og:url" content="/jekyll/updates/2020/10/02/blog4.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-02T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"This week I took a look into deploying static websites (such as this blog) into AWS using GitHub Actions. In my previous blogs I discussed using GitHub Actions in a previous blog as means of a simple CI/CD process to quickly add any desired changes to the blog whether it’d be a new theme or posts. I came across an amateur blog post that can help you deploy static sites into an S3 bucket if you want your site hosted within the cloud. I’ll share a few pages that you can look into to help you migrate your site onto the AWS platform.","url":"/jekyll/updates/2020/10/02/blog4.html","@type":"BlogPosting","headline":"Blog 4: Deploy Static Sites into AWS with GitHub Actions","dateModified":"2020-10-02T00:00:00+00:00","datePublished":"2020-10-02T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll/updates/2020/10/02/blog4.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/jekyll/updates/2020/10/02/blog4.html">
+    <h2 class="post-title">Blog 4: Deploy Static Sites into AWS with GitHub Actions</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Oct 2, 2020</div><ul class="post-categories"><li>jekyll</li><li>updates</li></ul></div>
+  <div class="post">
+    <p>This week I took a look into deploying static websites (such as this blog) into AWS using GitHub Actions. In my previous blogs I discussed using GitHub Actions in a previous blog as means of a simple CI/CD process to quickly add any desired changes to the blog whether it’d be a new theme or posts. I came across an amateur blog post that can help you deploy static sites into an S3 bucket if you want your site hosted within the cloud. I’ll share a few pages that you can look into to help you migrate your site onto the AWS platform.</p>
+
+<p>This blog <a href="https://blog.kylegalbraith.com/2019/12/09/deploying-your-static-websites-to-aws-in-style-using-github-actions/">page</a> explains the steps necessary to get your site up and running on an S3 bucket with full deployment automation through the use of an S3 GitHub Action. Once you set up your GitHub repository with the proper AWS credentials you can then get started with the S3-sync GitHub Action. I personally found this workflow to be quite similar to that of the jekyll one I’ve been using to deploy my blog site. Essentially what you’re doing with the workflow.yml file is that once you initialize a build sequence your static site will then be pushed into a designated S3 bucket within your AWS account.</p>
+
+<p>S3 buckets are an excellent way to store any files, images, static websites, etc that you need quick access too. There are other S3 tiers available such as AWS S3 Glacier if you don’t plan on frequently accessing your data.</p>
+
+<p>Here is a list of tools used:</p>
+
+<p><a href="https://github.com/marketplace/actions/s3-sync">GitHub Action S3-sync</a></p>
+
+<p><a href="https://aws.amazon.com/s3/">AWS S3</a></p>
+
+<p><a href="https://aws.amazon.com/s3/storage-classes/">S3 Tiers</a></p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

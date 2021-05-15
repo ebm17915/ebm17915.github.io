@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 11: Assigning a Domain to an AWS EC2 Instance </title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 11: Assigning a Domain to an AWS EC2 Instance | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 11: Assigning a Domain to an AWS EC2 Instance" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Domain names are a great way for people to uniquely identify internet services and resources. Many people assign these text-based labels as a way to easily memorize resources rather than the numerical addresses used in the Internet protocols." />
+<meta property="og:description" content="Domain names are a great way for people to uniquely identify internet services and resources. Many people assign these text-based labels as a way to easily memorize resources rather than the numerical addresses used in the Internet protocols." />
+<link rel="canonical" href="/aws/domain/hostname/ec2/2020/11/20/blog11.html" />
+<meta property="og:url" content="/aws/domain/hostname/ec2/2020/11/20/blog11.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-20T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Domain names are a great way for people to uniquely identify internet services and resources. Many people assign these text-based labels as a way to easily memorize resources rather than the numerical addresses used in the Internet protocols.","url":"/aws/domain/hostname/ec2/2020/11/20/blog11.html","@type":"BlogPosting","headline":"Blog 11: Assigning a Domain to an AWS EC2 Instance","dateModified":"2020-11-20T00:00:00+00:00","datePublished":"2020-11-20T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/aws/domain/hostname/ec2/2020/11/20/blog11.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/aws/domain/hostname/ec2/2020/11/20/blog11.html">
+    <h2 class="post-title">Blog 11: Assigning a Domain to an AWS EC2 Instance </h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Nov 20, 2020</div><ul class="post-categories"><li>AWS</li><li>Domain</li><li>Hostname</li><li>EC2</li></ul></div>
+  <div class="post">
+    <p>Domain names are a great way for people to uniquely identify internet services and resources. Many people assign these text-based labels as a way to easily memorize resources rather than the numerical addresses used in the Internet protocols.</p>
+
+<p>This will be a guide to assist in assigning a unique domain to an EC2 instance hosting an API, personal website, etc.</p>
+
+<p><strong>Note</strong>: This guide will be keeping costs to a minimum so paid domains and domain registering on AWS Route 53 will not be used. Here is a <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html">link</a> to getting started with Route 53, a great domain registering alternative for developers with a larger budget.</p>
+
+<h2>Getting a Free Domain</h2>
+
+<p>For those on a tight budget or just simply starting to learn about domains, there are plenty of ways to acquire a domain for free. This guide will be using <a href="https://www.freenom.com/en/index.html?lang=en">Freenom.com</a>, a popular free domain server.</p>
+
+<p>Once you’ve selected a name and went through all of checkout, view your newly acquired domain.</p>
+
+<p><img src="https://i.imgur.com/VnFpXix.png" alt="Imgur" /></p>
+
+<p>Keep this page open, it will be used in the coming steps.</p>
+
+<h2>Pointing Domain To AWS EC2 Instance DNS</h2>
+
+<p>Head over to the AWS console and navigate to the desired EC2 instance. It’s very important that the instance already has a web server/LAMP stack configured before proceeding.</p>
+
+<p>Now navigate to Route 53.</p>
+
+<p>As previously stated, Route 53 will not be used for its domain registering services (due to costs) but will be used to create a hosted zone for the new domain.</p>
+
+<ol>
+  <li>Select <strong><em>create hosted zone</em></strong> and name it accordingly to the domain name. <br /></li>
+  <li>Also set the zone type as <strong><em>public hosted zone</em></strong>. <br /></li>
+  <li>
+    <p>Finalize and save changes. <br />
+<img src="https://i.imgur.com/pMxAUkW.png" alt="Imgur" /></p>
+  </li>
+  <li>
+    <p>Once the hosted zone is created, press <strong><em>Create Record Set</em></strong> and create two A records (for www and one with an alias target of the new domain) with the IPv4 address of the EC2 instance.</p>
+  </li>
+  <li>Navigate back to the <strong>My Domain</strong> section of freenom and select <strong>*Manage Domain</strong> <br /></li>
+  <li>Go to the dropdown and select: Management Tools –&gt; Name Servers –&gt; Use custom nameservers <br /></li>
+  <li>Attach the 4 nameserver values found in the recently created hosted zone and save the changes. <br />
+<img src="https://i.imgur.com/nmsoTDk.png" alt="Imgur" /></li>
+</ol>
+
+<p>Now search the domain name on a search engine and check out the renamed site!</p>
+
+<p><img src="https://i.imgur.com/Fl3iEwE.png" alt="Imgur" /></p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

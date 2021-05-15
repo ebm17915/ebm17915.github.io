@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 0: Understanding the Jekyll Gemfile</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 0: Understanding the Jekyll Gemfile | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 0: Understanding the Jekyll Gemfile" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Jekyll, a popular simple static site generator, is commonly used by developers or bloggers who want a quick and easy solution to create posts on their discoveries. If you’d like to host your very own Jekyll site on GitHub Pages, please check out this article." />
+<meta property="og:description" content="Jekyll, a popular simple static site generator, is commonly used by developers or bloggers who want a quick and easy solution to create posts on their discoveries. If you’d like to host your very own Jekyll site on GitHub Pages, please check out this article." />
+<link rel="canonical" href="/jekyll/updates/2020/09/05/blog0.html" />
+<meta property="og:url" content="/jekyll/updates/2020/09/05/blog0.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-05T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Jekyll, a popular simple static site generator, is commonly used by developers or bloggers who want a quick and easy solution to create posts on their discoveries. If you’d like to host your very own Jekyll site on GitHub Pages, please check out this article.","url":"/jekyll/updates/2020/09/05/blog0.html","@type":"BlogPosting","headline":"Blog 0: Understanding the Jekyll Gemfile","dateModified":"2020-09-05T00:00:00+00:00","datePublished":"2020-09-05T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll/updates/2020/09/05/blog0.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/jekyll/updates/2020/09/05/blog0.html">
+    <h2 class="post-title">Blog 0: Understanding the Jekyll Gemfile</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Sep 5, 2020</div><ul class="post-categories"><li>jekyll</li><li>updates</li></ul></div>
+  <div class="post">
+    <p>Jekyll, a popular simple static site generator, is commonly used by developers or bloggers who want a quick and easy solution to create posts on their discoveries. If you’d like to host your very own Jekyll site on GitHub Pages, please check out this <a href="https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll">article</a>.</p>
+
+<p>Once you install Jekyll, you’ll notice a newly generated Gemfile inside your directory. Jekyll is a Gem, Ruby-based code, that can be utilized in Ruby projects. There are a variety of Gems available with their own unique functionality whether it’d be interacting with APIs or converting a Ruby object to JSON.</p>
+
+<p>Inside the Gemfile is a list of gems used by your website. Here is a snippet of gems being used in my Jekyll site:</p>
+
+<p><img src="https://i.imgur.com/QZV4WS1.png" alt="Imgur" /></p>
+
+<p>You’ll notice the specific syntax being used to determine which version of the gem you want to install and which group it affects.</p>
+
+<p>Those familiar with PHP’s Composer packet management, can see the similarities between a <em>Gemfile</em> and a <em>composer.json</em> file. They are both files that contain user declared packages and dependencies necessary for the project. Gemfile’s are commonly managed by Bundler, a gem that manages gem dependencies. Similar to Composer, you’ll need to run an installation command <code class="language-plaintext highlighter-rouge">bundle install</code> inside the directory of your Gemfile.</p>
+
+<p>Periodically as you add additional gems to enhance your Jekyll site, you’ll might need to update packages to the most recent released version. Run <code class="language-plaintext highlighter-rouge">bundle update</code> to search and install and package updates.</p>
+
+<p><strong>Other Bundler Commands</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">bundle init</code> - Create a new Gemfile<br />
+<code class="language-plaintext highlighter-rouge">bundle exec</code> - Execute a script in the current bundle<br />
+<code class="language-plaintext highlighter-rouge">bundle help</code> - Display detailed help for each subcommand</p>
+
+<p>Helpful Links:</p>
+
+<p><a href="https://jekyllrb.com/docs/installation/macos/">Bundler</a></p>
+
+<p><a href="https://bundler.io/">Bundler for Mac</a></p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

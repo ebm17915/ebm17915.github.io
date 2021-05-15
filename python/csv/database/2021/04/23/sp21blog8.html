@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 8 Spring 2021: Python Script to Generate CSV Rows</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 8 Spring 2021: Python Script to Generate CSV Rows | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 8 Spring 2021: Python Script to Generate CSV Rows" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods." />
+<meta property="og:description" content="It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods." />
+<link rel="canonical" href="/python/csv/database/2021/04/23/sp21blog8.html" />
+<meta property="og:url" content="/python/csv/database/2021/04/23/sp21blog8.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-23T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods.","url":"/python/csv/database/2021/04/23/sp21blog8.html","@type":"BlogPosting","headline":"Blog 8 Spring 2021: Python Script to Generate CSV Rows","dateModified":"2021-04-23T00:00:00+00:00","datePublished":"2021-04-23T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/python/csv/database/2021/04/23/sp21blog8.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/python/csv/database/2021/04/23/sp21blog8.html">
+    <h2 class="post-title">Blog 8 Spring 2021: Python Script to Generate CSV Rows</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Apr 23, 2021</div><ul class="post-categories"><li>Python</li><li>CSV</li><li>Database</li></ul></div>
+  <div class="post">
+    <p>It’s a common task for database administrators to go through a giant list of data with thousands of entries. Normally these entries aren’t structured in any format so passing them into a database takes a bit of formatting. The common data format would be a CSV (comma separated values) which can be imported into a database or Excel spreadsheet. There’s many ways to go about converting lists of data into CSV’s but this guide will cover 2 methods.</p>
+
+<h3> Method 1: For loop </h3>
+
+<ol>
+  <li>Create a new python script and import any necessary modules
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/local/bin/python3
+import sys
+import os
+</code></pre></div>    </div>
+  </li>
+  <li>Depending how you call the list of data entries, create a function that iterates through all the entries and outputs a csv formatted row.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>csv = [data1, data2, data3, data4, data5]
+csv_row = ""
+for item in csv:
+if type(item) = str:
+   csv_row += "\"" + item + "\", "
+else:
+   csv_row += str(item) + ","
+print(csv_row)
+</code></pre></div>    </div>
+  </li>
+  <li>Data should be outputted like so:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"data1","data2","data3","data4","data5"
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3> Method 2: Import the built-in Python CSV module </h3>
+
+<ol>
+  <li>Import python csv module
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/local/bin/python3
+import sys
+import os
+import csv
+</code></pre></div>    </div>
+  </li>
+  <li>Create a function that creates a csv file with the data imported. Here is an example
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>with open('eggs.csv', 'w', newline='') as csvfile:
+ spamwriter = csv.writer(csvfile, delimiter=' ',
+                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
+ spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+ spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

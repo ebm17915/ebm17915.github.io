@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 5: Adding SSL Certificates to Your REST Api</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 5: Adding SSL Certificates to Your REST Api | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 5: Adding SSL Certificates to Your REST Api" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This week I assisted my friend in uploading an SSL certificate for his REST API to enable secure and encrypted connection within his application. I won’t be going through the whole architecture of the application but I’ll share the steps I took to enabling HTTPS connection between his front-end application and his backend services." />
+<meta property="og:description" content="This week I assisted my friend in uploading an SSL certificate for his REST API to enable secure and encrypted connection within his application. I won’t be going through the whole architecture of the application but I’ll share the steps I took to enabling HTTPS connection between his front-end application and his backend services." />
+<link rel="canonical" href="/jekyll/updates/2020/10/09/blog5.html" />
+<meta property="og:url" content="/jekyll/updates/2020/10/09/blog5.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-09T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"This week I assisted my friend in uploading an SSL certificate for his REST API to enable secure and encrypted connection within his application. I won’t be going through the whole architecture of the application but I’ll share the steps I took to enabling HTTPS connection between his front-end application and his backend services.","url":"/jekyll/updates/2020/10/09/blog5.html","@type":"BlogPosting","headline":"Blog 5: Adding SSL Certificates to Your REST Api","dateModified":"2020-10-09T00:00:00+00:00","datePublished":"2020-10-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll/updates/2020/10/09/blog5.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/jekyll/updates/2020/10/09/blog5.html">
+    <h2 class="post-title">Blog 5: Adding SSL Certificates to Your REST Api</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Oct 9, 2020</div><ul class="post-categories"><li>jekyll</li><li>updates</li></ul></div>
+  <div class="post">
+    <p>This week I assisted my friend in uploading an SSL certificate for his REST API to enable secure and encrypted connection within his application. I won’t be going through the whole architecture of the application but I’ll share the steps I took to enabling HTTPS connection between his front-end application and his backend services.</p>
+
+<p>With the ever-expanding Internet, the need for privacy is at an all time high. Companies are constantly hiring networking specialists and system administrators to help in increasing the security of their application. One of those tasks is uploading and managing an SSL/TLS certificate on an application or website.</p>
+
+<p>The first step I took was checking to see if a proper domain was attached to the site for simplicity purposes. In the scenario I was in I recommended my friend <a href="https://www.freenom.com/en/freeandpaiddomains.html">freenom.com</a> as they provide a wide array of free public domains.</p>
+
+<p>Next, I had to choose which SSL/TLS provider I wanted to use and if a wildcard certificate was necessary. I highly recommend using <a href="https://letsencrypt.org/">Let’s Encrypt</a> for free SSL/TLS certificates as it’s their goal to encrypt everything on the internet. They are otherwise known as a free CA (certificate authority) an issuer of digital certificates that certifies the ownership of the public key with the subject of the certificate.</p>
+
+<p>You will soon be redirected to <a href="https://certbot.eff.org/">Certbot</a> a bot specializing in the automation of uploading certificates onto your servers. Simply choose which web server your website/api is running on (Apache, NGINX, etc) and OS then you’ll be prompted with a set of instructions to get your certificates uploaded. In my case, I had an Amazon Linux 2 EC2 instance running on an Apache web server.</p>
+
+<p><img src="https://i.imgur.com/NR3m6AH.png?1" alt="Imgur" /></p>
+
+<p>I recommend running the command that allows Cerbot to edit your Apache config file automatically to save time, but for those who prefer to configure themselves do the manual approach. Once my domain was served I had to configure Apache as a reverse proxy to then enable communication between the API and the hosted frontend application.</p>
+
+<p><strong>Notes</strong></p>
+
+<p>I considered using <a href="https://aws.amazon.com/certificate-manager/">Amazon Certificate Manager</a> due to some of the application services living on AWS but for the sake of time Let’s Encrypt was the best option.</p>
+
+<p>Some alternatives to enabling HTTPS connection would be using hosting services that will provide it for you (Netlify, WordPress, FireBase, etc) but it’s always good to learn how to do it on your own and adding it to your skill set.</p>
+
+<p>Thanks for reading!</p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

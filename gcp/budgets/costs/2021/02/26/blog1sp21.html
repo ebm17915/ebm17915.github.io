@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert." />
+<meta property="og:description" content="Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert." />
+<link rel="canonical" href="/gcp/budgets/costs/2021/02/26/blog1sp21.html" />
+<meta property="og:url" content="/gcp/budgets/costs/2021/02/26/blog1sp21.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-26T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert.","url":"/gcp/budgets/costs/2021/02/26/blog1sp21.html","@type":"BlogPosting","headline":"Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform","dateModified":"2021-02-26T00:00:00+00:00","datePublished":"2021-02-26T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/gcp/budgets/costs/2021/02/26/blog1sp21.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/gcp/budgets/costs/2021/02/26/blog1sp21.html">
+    <h2 class="post-title">Blog 1 Spring 2021: Setting up Budget Alerts on Google Cloud Platform</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Feb 26, 2021</div><ul class="post-categories"><li>GCP</li><li>Budgets</li><li>Costs</li></ul></div>
+  <div class="post">
+    <p>Developers constantly face the issue of maintaining cost-efficiency when hosting their application on 3rd party platforms. Providers such as Google Cloud Platform and AWS provide developers the necessary tools to keep costs within a budget. Whether it’d be notifying through a monitoring workspace or email, budget alerts is a convenient way to ensure service costs don’t exceed a certain threshold. This tutorial will be covering GCP’s Cloud Billing budgets handler and how to setup a budget alert.</p>
+
+<h3>Creating the Project Budget and Alerts</h3>
+
+<ol>
+  <li>
+    <p>First, select the desired project then proceed to the “Billing” section on the left-hand navigation pane. <br />
+<img src="https://i.imgur.com/Abd8sLC.png" alt="Imgur" /></p>
+  </li>
+  <li>
+    <p>Navigate to the “Budgets &amp; alerts” tab and select “Create Budget”. <br /></p>
+  </li>
+  <li>
+    <p>Fill out the budget information to meet project specifications. Project managers can set the specific services the budget applies to and to add any applicable discounts/credits. The cost trend chart shown below, shows a summarized bar-chart view of the project’s cost in the past 12 months. <br />
+<img src="https://i.imgur.com/R4iKPER.png" alt="Imgur" /></p>
+  </li>
+  <li>
+    <p>Proceed to the “Amount” section of the process and choose the “Budget type”. Once selected set the “Target amount”. <br />
+<img src="https://i.imgur.com/9iNsZn4.png" alt="Imgur" /></p>
+  </li>
+  <li>
+    <p>Move along to the “Actions” section. This section sets alert thresholds that will then email members on a list if a spend exceeds a specified amount. Make sure to specify the method of notification. Google Cloud can notify teams through direct email or can send messages to a channel within a monitoring workspace <br />
+<img src="https://i.imgur.com/bSvDS8q.png" alt="Imgur" /></p>
+  </li>
+  <li>
+    <p>Click “Finish” and verify the new budget creation inside the “Billing” section of the project. <br /></p>
+  </li>
+</ol>
+
+<p>For a more programmatic approach feel free to use Cloud Billing Budget API to setup a project budget. This will be covered in the next article.</p>
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

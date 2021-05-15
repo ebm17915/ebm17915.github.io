@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 3 Spring 2021: Rsync Command</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 3 Spring 2021: Rsync Command | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 3 Spring 2021: Rsync Command" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults." />
+<meta property="og:description" content="Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults." />
+<link rel="canonical" href="/rsync/linux/2021/03/12/blog3sp21.html" />
+<meta property="og:url" content="/rsync/linux/2021/03/12/blog3sp21.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-12T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults.","url":"/rsync/linux/2021/03/12/blog3sp21.html","@type":"BlogPosting","headline":"Blog 3 Spring 2021: Rsync Command","dateModified":"2021-03-12T00:00:00+00:00","datePublished":"2021-03-12T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/rsync/linux/2021/03/12/blog3sp21.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/rsync/linux/2021/03/12/blog3sp21.html">
+    <h2 class="post-title">Blog 3 Spring 2021: Rsync Command</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Mar 12, 2021</div><ul class="post-categories"><li>Rsync</li><li>Linux</li></ul></div>
+  <div class="post">
+    <p>Copying and transferring files from server to server is a common task conducted by most IT specialists. Some use cases involve creating a sufficient amount of database backups in the case of a power outage. Standard synchronization commands used are scp and rcp but come with their own set of faults.</p>
+
+<p>On Unix-type operating systems, the rsync command synchronizes files from a source to a target, on a local machine or over a secure network connection. It’s an excellent substitute for rapidly copying files to a destination server. I’ll be showing a few commands and options.</p>
+
+<h3>Command Syntax Examples</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rsync [OPTION…] SRC… [DEST]</td>
+      <td>Local use</td>
+    </tr>
+    <tr>
+      <td>rsync [OPTION…] [USER@]HOST:SRC… [DEST]</td>
+      <td>Pulling from a remote host</td>
+    </tr>
+    <tr>
+      <td>rsync [OPTION…] SRC… [USER@]HOST:DEST</td>
+      <td>Push to a remote host</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Command Examples</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rsync -a -v –progress /test/dir/ ubuntu@testhostname:/test/dir2/</td>
+      <td>Copies local directory “/test/dir/” to the remote host “testhostname”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Rsync Options</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-v, –verbose</td>
+      <td>increase verbosity</td>
+    </tr>
+    <tr>
+      <td>-q, –quiet</td>
+      <td>suppress non-error messages</td>
+    </tr>
+    <tr>
+      <td>-c, –checksum</td>
+      <td>Check for errors</td>
+    </tr>
+    <tr>
+      <td>-a, –archive</td>
+      <td>archive mode</td>
+    </tr>
+    <tr>
+      <td>-n, –dry-run</td>
+      <td>Perform a trial run of the command with no changes done</td>
+    </tr>
+    <tr>
+      <td>“sync -e”</td>
+      <td>Pass rsync command into a remote host</td>
+    </tr>
+    <tr>
+      <td>–ignore-errors</td>
+      <td>Ignore any present errors</td>
+    </tr>
+    <tr>
+      <td>-h, –human-readable</td>
+      <td>output numbers in a human-readable format</td>
+    </tr>
+    <tr>
+      <td>–progress</td>
+      <td>Show progress of rsync command output</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

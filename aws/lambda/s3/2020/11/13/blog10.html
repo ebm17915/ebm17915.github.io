@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 10: Quick and Simple CI/CD Pipeline with AWS Services</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 10: Quick and Simple CI/CD Pipeline with AWS Services | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 10: Quick and Simple CI/CD Pipeline with AWS Services" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is a quick guide for anyone interested in creating a CI/CD pipeline that auto-updates a Lambda function every time a push is made within CodeCommit. The pipeline is a great way to automate any changes you make to your Lambda function all done within a CodeCommit repository." />
+<meta property="og:description" content="This is a quick guide for anyone interested in creating a CI/CD pipeline that auto-updates a Lambda function every time a push is made within CodeCommit. The pipeline is a great way to automate any changes you make to your Lambda function all done within a CodeCommit repository." />
+<link rel="canonical" href="/aws/lambda/s3/2020/11/13/blog10.html" />
+<meta property="og:url" content="/aws/lambda/s3/2020/11/13/blog10.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-13T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"This is a quick guide for anyone interested in creating a CI/CD pipeline that auto-updates a Lambda function every time a push is made within CodeCommit. The pipeline is a great way to automate any changes you make to your Lambda function all done within a CodeCommit repository.","url":"/aws/lambda/s3/2020/11/13/blog10.html","@type":"BlogPosting","headline":"Blog 10: Quick and Simple CI/CD Pipeline with AWS Services","dateModified":"2020-11-13T00:00:00+00:00","datePublished":"2020-11-13T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/aws/lambda/s3/2020/11/13/blog10.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/aws/lambda/s3/2020/11/13/blog10.html">
+    <h2 class="post-title">Blog 10: Quick and Simple CI/CD Pipeline with AWS Services</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Nov 13, 2020</div><ul class="post-categories"><li>AWS</li><li>Lambda</li><li>S3</li></ul></div>
+  <div class="post">
+    <p>This is a quick guide for anyone interested in creating a  CI/CD pipeline that auto-updates a Lambda function every time a push is made within CodeCommit. The pipeline is a great way to automate any changes you make to your Lambda function all done within a CodeCommit repository.</p>
+
+<p><strong>Note</strong>: There are 3 types of ways to deploy your code onto AWS Lambda</p>
+
+<ul>
+  <li>Using the in-line editor provided (up to 3 MB of Lambda code storage)</li>
+  <li>Making a zipped deployment package and uploading it via console</li>
+  <li>Making a zipped package and saving it in the S3 bucket. (up to 250 MB unzipped)</li>
+</ul>
+
+<p>Preview of CI/CD Pipeline:</p>
+
+<p><strong><em>CodeCommit –&gt; CodeBuild/CodePipeline –&gt; S3 –&gt; Lambda</em></strong></p>
+
+<ol>
+  <li>You’ll want to create a CodeCommit repository dedicated to hosting your Lambda function source code.</li>
+</ol>
+
+<p><img src="https://i.imgur.com/qacL4Sv.png" alt="Imgur" /></p>
+
+<ol>
+  <li>
+    <p>Create an S3 Bucket where our Lambda source code will be zipped and stored.</p>
+  </li>
+  <li>
+    <p>Add an S3 trigger to your lambda function so whenever there is a change in the zipped Lambda code it will be called.</p>
+  </li>
+</ol>
+
+<p><img src="https://i.imgur.com/6PjTofn.png" alt="Imgur" /></p>
+
+<ol>
+  <li>
+    <p>Now you’ll want to create a CodeBuild job that knows which branch and repository to pull the source Lambda code from and create the zipped file. For this step you’ll need to use a <code class="language-plaintext highlighter-rouge">buildspec</code> file, which is essentially a script that provides the steps necessary for the CodeBuild job. Here is an example <code class="language-plaintext highlighter-rouge">buildspec</code> file:</p>
+
+    <p>build:
+ commands:
+ — cd ./deploymentDir
+ — zip -r deployment.zip *
+ — aws s3 cp deployment.zip s3://your-bucketname/location-of-zip
+ artifacts:
+ files:
+ — ./deploymentDir/deployment.zip</p>
+  </li>
+  <li>
+    <p>Finally, create a CodePipeline that will where we will set triggers on when we will run the CodeBuild step.</p>
+  </li>
+</ol>
+
+<p><img src="https://i.imgur.com/HFWC4pP.png" alt="Imgur" /></p>
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>

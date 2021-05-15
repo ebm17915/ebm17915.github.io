@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>Blog 0 Spring 2021: Paramiko Script </title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Blog 0 Spring 2021: Paramiko Script | Earl’s Super Duper Fantastic Insane CIT 480 Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Blog 0 Spring 2021: Paramiko Script" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="SSH (Secure Shell) is a commonly used network protocol that securely passes communication between two computers. If a third party source were to intercept the transferred information, it would appear encrypted and unreadable. Automated server provisioning through the use of SSH is a common practice in an IT environment. I’ll be covering a simple Python script designed to connect and run a command on remote machines in Python using Paramiko." />
+<meta property="og:description" content="SSH (Secure Shell) is a commonly used network protocol that securely passes communication between two computers. If a third party source were to intercept the transferred information, it would appear encrypted and unreadable. Automated server provisioning through the use of SSH is a common practice in an IT environment. I’ll be covering a simple Python script designed to connect and run a command on remote machines in Python using Paramiko." />
+<link rel="canonical" href="/ssh/paramiko/python/2021/02/19/blog0sp21.html" />
+<meta property="og:url" content="/ssh/paramiko/python/2021/02/19/blog0sp21.html" />
+<meta property="og:site_name" content="Earl’s Super Duper Fantastic Insane CIT 480 Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-19T00:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"SSH (Secure Shell) is a commonly used network protocol that securely passes communication between two computers. If a third party source were to intercept the transferred information, it would appear encrypted and unreadable. Automated server provisioning through the use of SSH is a common practice in an IT environment. I’ll be covering a simple Python script designed to connect and run a command on remote machines in Python using Paramiko.","url":"/ssh/paramiko/python/2021/02/19/blog0sp21.html","@type":"BlogPosting","headline":"Blog 0 Spring 2021: Paramiko Script","dateModified":"2021-02-19T00:00:00+00:00","datePublished":"2021-02-19T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/ssh/paramiko/python/2021/02/19/blog0sp21.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header ">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.png" alt="Earl Madjus" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">Earl Madjus</a>
+      </h2>
+      </div><p class="tagline">DevOps Engineer. Solutions Architect</p></div>
+      
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/ssh/paramiko/python/2021/02/19/blog0sp21.html">
+    <h2 class="post-title">Blog 0 Spring 2021: Paramiko Script </h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Feb 19, 2021</div><ul class="post-categories"><li>SSH</li><li>Paramiko</li><li>Python</li></ul></div>
+  <div class="post">
+    <p>SSH (Secure Shell) is a commonly used network protocol that securely passes communication between two computers. If a third party source were to intercept the transferred information, it would appear encrypted and unreadable. Automated server provisioning through the use of SSH is a common practice in an IT environment. I’ll be covering a simple Python script designed to connect and run a command on remote machines in Python using Paramiko.</p>
+
+<p><a href="https://www.paramiko.org/">Paramiko</a> is a Python module that implements the SSH network protocol for secure connections to remote machines. It’s a great tool for those who prefer a more pythonic approach.</p>
+
+<h3>Paramiko Script</h3>
+
+<ol>
+  <li>Create a new file a name it <code class="language-plaintext highlighter-rouge">paramiko-script.py</code>. Then, start by importing the paramiko module.<br />
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import sys
+import paramiko
+</code></pre></div>    </div>
+  </li>
+  <li>Just for the purpose of the demo, create variables with arguments that will be passed to the script.<br />
+<strong><em>Note</em></strong> If you would like to authenticate using an RSA key (Pem key), please do <code class="language-plaintext highlighter-rouge">key = path_to_key.pem</code>. <br />
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user     = sys.argv[1]
+hostname = sys.argv[2]
+password = sys.argv[3]
+command  = sys.argv[4]
+</code></pre></div>    </div>
+  </li>
+  <li>Continue on with the script by writing code that establishes connection between the local and remote machines.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>try:
+ ssh_client = paramiko.SSHClient()
+ ssh_client.set_missing_host_key_policy(paramiko.WarningPolicy())
+
+ ssh_client.connect(user, hostname, password, pkey = key)
+
+ stdin, stdout, stderr = ssh_client.exec_command(command)
+ print stdout.read()
+ ssh_client.close()
+</code></pre></div>    </div>
+  </li>
+  <li>Add any additional classes or functions, then save the script. <br /></li>
+  <li>Run <code class="language-plaintext highlighter-rouge">chmod +x paramiko-script.py</code> to make it executable. Finally, run the script with the necessary arguments. <br /></li>
+</ol>
+
+<p>Done! Paramiko opens the floor to a variety of commands that can be easily converted into the Python language.</p>
+
+
+  </div></div>
+
+    </section>
+    <footer class="">
+      <ul class="social about-footer "><a href="https://github.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/earlmadjus" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a><a href="https://twitter.com/ebm17915" target="_blank">
+          <li>
+            <i class="icon-twitter-squared"></i>
+          </li>
+        </a></ul><p class="about-footer ">&copy;
+        2021</p>
+    </footer>
+  </main>
+  
+</body>
+
+</html>
